@@ -3,26 +3,31 @@ import * as path from 'path';
 import { v4 as uuidv4 } from 'uuid';
 import { ModuleEntry, ModuleManifest } from './types';
 
-const DB_FILE = path.join(process.cwd(), 'data', 'modules.json');
-const MODULES_DIR = path.join(process.cwd(), 'data', 'modules');
-
 export class Database {
   private modules: ModuleEntry[] = [];
+  private dbFile: string;
+  private modulesDir: string;
+  private baseUrl: string;
 
-  constructor() {
+  constructor(dataPath?: string, baseUrl?: string) {
+    const basePath = dataPath || path.join(process.cwd(), 'data');
+    this.dbFile = path.join(basePath, 'modules.json');
+    this.modulesDir = path.join(basePath, 'modules');
+    this.baseUrl = baseUrl || 'http://localhost:3001';
+
     this.ensureDirectories();
     this.loadModules();
   }
 
   private ensureDirectories(): void {
-    fs.ensureDirSync(path.dirname(DB_FILE));
-    fs.ensureDirSync(MODULES_DIR);
+    fs.ensureDirSync(path.dirname(this.dbFile));
+    fs.ensureDirSync(this.modulesDir);
   }
 
   private loadModules(): void {
     try {
-      if (fs.existsSync(DB_FILE)) {
-        const data = fs.readJsonSync(DB_FILE);
+      if (fs.existsSync(this.dbFile)) {
+        const data = fs.readJsonSync(this.dbFile);
         this.modules = data.modules || [];
       }
     } catch (error) {
@@ -33,7 +38,7 @@ export class Database {
 
   private saveModules(): void {
     try {
-      fs.writeJsonSync(DB_FILE, { modules: this.modules }, { spaces: 2 });
+      fs.writeJsonSync(this.dbFile, { modules: this.modules }, { spaces: 2 });
     } catch (error) {
       console.error('Error saving modules:', error);
       throw new Error('Failed to save modules');
@@ -129,13 +134,13 @@ export class Database {
 
   generateManifest(): ModuleManifest {
     const manifest: ModuleManifest = {};
-    
+
     for (const module of this.modules) {
       if (module.type === 'url' && module.url) {
         manifest[module.name] = module.url;
       } else if (module.type === 'local' && module.path) {
         // For local modules, serve them under /modules/{name}/remoteEntry.json
-        manifest[module.name] = `http://localhost:3001/modules/${module.name}/remoteEntry.json`;
+        manifest[module.name] = `${this.baseUrl}/modules/${module.name}/remoteEntry.json`;
       }
     }
 
@@ -143,11 +148,11 @@ export class Database {
   }
 
   getModulesDirectory(): string {
-    return MODULES_DIR;
+    return this.modulesDir;
   }
 
   private setupLocalModule(name: string, sourcePath: string): void {
-    const targetDir = path.join(MODULES_DIR, name);
+    const targetDir = path.join(this.modulesDir, name);
 
     try {
       // Ensure the target directory exists
@@ -178,7 +183,7 @@ export class Database {
   }
 
   private cleanupLocalModule(name: string): void {
-    const targetDir = path.join(MODULES_DIR, name);
+    const targetDir = path.join(this.modulesDir, name);
 
     try {
       if (fs.existsSync(targetDir)) {
