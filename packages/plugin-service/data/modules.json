@@ -1,0 +1,12 @@
+{
+  "modules": [
+    {
+      "id": "1efb6b4a-4697-437e-a527-7e2c474d2241",
+      "name": "example-plugin",
+      "url": "http://localhost:3003/remoteEntry.json",
+      "type": "url",
+      "createdAt": "2025-10-29T16:40:09.391Z",
+      "updatedAt": "2025-10-29T16:40:09.391Z"
+    }
+  ]
+}

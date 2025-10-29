@@ -1,0 +1,21 @@
+{
+  "name": "example-plugin",
+  "version": "1.0.0",
+  "description": "Example plugin for the plugin system",
+  "main": "dist/remoteEntry.json",
+  "scripts": {
+    "start": "vite --port 3003",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@softarc/native-federation": "^2.0.8"
+  },
+  "devDependencies": {
+    "@module-federation/vite": "^0.2.6",
+    "@types/node": "^20.10.5",
+    "native-federation-esbuild": "workspace:*",
+    "typescript": "^5.3.3",
+    "vite": "^4.0.1"
+  }
+}
