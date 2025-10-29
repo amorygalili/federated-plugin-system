@@ -76,6 +76,9 @@ importers:
       '@softarc/native-federation':
         specifier: ^2.0.8
         version: 2.0.28
+      plugin-system:
+        specifier: workspace:*
+        version: link:../plugin-system
     devDependencies:
       '@module-federation/vite':
         specifier: ^0.2.6
@@ -86,9 +89,6 @@ importers:
       native-federation-esbuild:
         specifier: workspace:*
         version: link:../esbuild
-      plugin-system:
-        specifier: workspace:*
-        version: link:../plugin-system
       typescript:
         specifier: ^5.3.3
         version: 5.9.3
@@ -148,15 +148,9 @@ importers:
         specifier: ^2.0.8
         version: 2.0.28
     devDependencies:
-      '@module-federation/vite':
-        specifier: ^0.2.6
-        version: 0.2.8(@softarc/native-federation@2.0.28)
       '@types/node':
         specifier: ^20.10.5
         version: 20.19.24
-      native-federation-esbuild:
-        specifier: workspace:*
-        version: link:../esbuild
       typescript:
         specifier: ^5.3.3
         version: 5.9.3

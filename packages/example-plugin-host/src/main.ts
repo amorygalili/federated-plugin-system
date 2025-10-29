@@ -1,9 +1,4 @@
-import { initFederation, loadRemoteModule } from "@softarc/native-federation";
-
-// Copy of the setup function from shared/loader.ts to avoid import issues
-async function setup(manifest?: string | Record<string, string>) {
-  await initFederation(manifest);
-}
+import { getPlugins } from "plugin-system";
 
 interface ExamplePlugin {
   name: string;
@@ -18,32 +13,14 @@ async function main() {
   console.log("Plugin Host starting...");
 
   try {
-    console.log("Step 1: Setting up federation...");
-
-    // Use the same setup pattern as other hosts
-    await setup({
-      "plugin-system": "http://localhost:3002/remoteEntry.json"
-    });
-
-    console.log("✅ Step 1 complete: Federation setup complete");
-    console.log("Step 2: Loading plugin system module...");
-
-    // Load the plugin system
-    const pluginSystemModule = await loadRemoteModule({
-      remoteName: "plugin-system",
-      exposedModule: "./pluginLoader",
-    });
-
-    console.log("✅ Step 2 complete: Plugin system module loaded");
-    console.log("Available exports:", Object.keys(pluginSystemModule));
-    console.log("Step 3: Fetching plugins...");
+    console.log("Step 1: Fetching plugins...");
 
     // Get all plugins from the plugin service
-    const plugins: ExamplePlugin[] = await (pluginSystemModule as any).getPlugins(
+    const plugins: ExamplePlugin[] = await getPlugins<ExamplePlugin>(
       "http://localhost:3001/api/manifest"
     );
 
-    console.log(`✅ Step 3 complete: Loaded ${plugins.length} plugins:`, plugins);
+    console.log(`✅ Step 1 complete: Loaded ${plugins.length} plugins:`, plugins);
 
     if (plugins.length === 0) {
       console.warn("⚠️ No plugins found. Make sure plugins are registered in the management UI.");
@@ -51,7 +28,7 @@ async function main() {
       return;
     }
 
-    console.log("Step 4: Initializing and executing plugins...");
+    console.log("Step 2: Initializing and executing plugins...");
 
     // Initialize and execute each plugin
     plugins.forEach((plugin, index) => {
@@ -70,8 +47,8 @@ async function main() {
       console.log("Plugin execution result:", result);
     });
 
-    console.log("✅ Step 4 complete: All plugins initialized and tested");
-    console.log("Step 5: Displaying results in UI...");
+    console.log("✅ Step 2 complete: All plugins initialized and tested");
+    console.log("Step 3: Displaying results in UI...");
 
     // Display results in the UI
     displayResults(plugins);

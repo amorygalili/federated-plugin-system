@@ -4,10 +4,9 @@
   "scripts": {
     "build": "pnpm -r run build",
     "run:plugin-service": "pnpm --filter plugin-service run dev",
-    "run:plugin-system": "pnpm --filter plugin-system run start",
     "run:example-plugin": "pnpm --filter example-plugin run start",
     "run:example-plugin-host": "pnpm --filter example-plugin-host run start",
-    "run:plugins": "pnpm --filter plugin-service --filter plugin-system --filter example-plugin --filter example-plugin-host --parallel run start"
+    "run:plugins": "pnpm --filter plugin-service --filter example-plugin --filter example-plugin-host --parallel run start"
   },
   "dependencies": {
     "node-fetch": "^3.3.2"

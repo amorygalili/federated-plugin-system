@@ -8,13 +8,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@softarc/native-federation": "^2.0.8"
+    "@softarc/native-federation": "^2.0.8",
+    "plugin-system": "workspace:*"
   },
   "devDependencies": {
     "@module-federation/vite": "^0.2.6",
     "@types/node": "^20.10.5",
     "native-federation-esbuild": "workspace:*",
-    "plugin-system": "workspace:*",
     "typescript": "^5.3.3",
     "vite": "^4.0.1"
   }

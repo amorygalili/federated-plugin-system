@@ -6,9 +6,7 @@ const {
 module.exports = withNativeFederation({
   name: "example-plugin-host",
   exposes: {},
-  remotes: {
-    "plugin-system": "http://localhost:3002/remoteEntry.json",
-  },
+  remotes: {},
   shared: {
     ...shareAll({
       singleton: true,

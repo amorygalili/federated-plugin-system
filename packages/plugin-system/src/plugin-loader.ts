@@ -40,7 +40,7 @@ class PluginLoader {
     }
 
     this.manifestCache = result.data;
-    return this.manifestCache;
+    return result.data;
   }
 
   /**

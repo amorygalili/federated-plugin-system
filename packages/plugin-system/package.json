@@ -2,21 +2,21 @@
   "name": "plugin-system",
   "version": "1.0.0",
   "description": "Frontend plugin system for native federation",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "start": "vite --port 3002",
     "build": "vite build && tsc --emitDeclarationOnly",
-    "dev": "vite",
-    "preview": "vite preview"
+    "dev": "tsc --watch"
   },
   "dependencies": {
     "@softarc/native-federation": "^2.0.8"
   },
   "devDependencies": {
-    "@module-federation/vite": "^0.2.6",
     "@types/node": "^20.10.5",
-    "native-federation-esbuild": "workspace:*",
     "typescript": "^5.3.3",
     "vite": "^4.0.1"
   }
