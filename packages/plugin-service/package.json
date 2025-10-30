@@ -1,15 +1,16 @@
 {
-  "name": "plugin-service",
-  "version": "1.0.1",
+  "name": "federated-plugin-service",
+  "version": "0.0.1",
   "description": "Plugin management service for native federation",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
-    "plugin-service": "dist/cli.js"
+    "federated-plugin-service": "dist/cli.js"
   },
   "files": [
     "dist",
-    "public"
+    "public",
+    "README.md"
   ],
   "scripts": {
     "start": "node dist/cli.js",
@@ -17,6 +18,22 @@
     "build": "tsc",
     "clean": "rimraf dist"
   },
+  "keywords": [
+    "plugin",
+    "federation",
+    "native-federation",
+    "microfrontend",
+    "module-federation",
+    "plugin-service",
+    "express",
+    "middleware"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/federated-plugin-system.git",
+    "directory": "packages/plugin-service"
+  },
+  "license": "MIT",
   "dependencies": {
     "express": "^4.18.2",
     "cors": "^2.8.5",

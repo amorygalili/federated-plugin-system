@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@softarc/native-federation": "^2.0.8",
-    "plugin-system": "workspace:*"
+    "federated-plugin-system": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^20.10.5",

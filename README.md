@@ -113,43 +113,6 @@ This starts:
 1. Open the Plugin Host Demo: http://localhost:3004
 2. You should see the loaded plugins and be able to interact with them
 
-## 📁 Project Structure
-
-```
-federated-plugin-system/
-├── packages/
-│   ├── plugin-service/          # Backend service for plugin management
-│   │   ├── src/
-│   │   │   ├── index.ts         # Express server
-│   │   │   ├── routes.ts        # API routes
-│   │   │   ├── database.ts      # Simple JSON database
-│   │   │   └── types.ts         # TypeScript types
-│   │   ├── public/              # Management UI
-│   │   └── data/                # Plugin storage
-│   │
-│   ├── plugin-system/           # Frontend plugin loader library
-│   │   ├── src/
-│   │   │   ├── index.ts         # Main exports
-│   │   │   ├── plugin-loader.ts # Plugin loading logic
-│   │   │   └── types.ts         # TypeScript types
-│   │   └── dist/                # Built library
-│   │
-│   ├── example-plugin/          # Example plugin implementation
-│   │   ├── src/
-│   │   │   ├── plugin.ts        # Plugin implementation
-│   │   │   └── federation.ts    # Federation config
-│   │   └── dist/                # Built plugin
-│   │
-│   └── example-plugin-host/     # Example host application
-│       ├── src/
-│       │   └── main.ts          # Host app logic
-│       └── dist/                # Built host app
-│
-├── package.json                 # Root package.json with scripts
-├── pnpm-workspace.yaml          # pnpm workspace config
-└── README.md                    # This file
-```
-
 ## 💻 Usage
 
 ### Using the Plugin System in Your Application

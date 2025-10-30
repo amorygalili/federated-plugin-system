@@ -1,17 +1,33 @@
 {
-  "name": "plugin-system",
-  "version": "1.0.0",
+  "name": "federated-plugin-system",
+  "version": "0.0.1",
   "description": "Frontend plugin system for native federation",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "README.md"
   ],
   "scripts": {
     "build": "vite build && tsc --emitDeclarationOnly",
     "dev": "tsc --watch"
   },
+  "keywords": [
+    "plugin",
+    "federation",
+    "native-federation",
+    "microfrontend",
+    "module-federation",
+    "dynamic-loading",
+    "plugins"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/federated-plugin-system.git",
+    "directory": "packages/plugin-system"
+  },
+  "license": "MIT",
   "dependencies": {
     "@softarc/native-federation": "^2.0.8"
   },

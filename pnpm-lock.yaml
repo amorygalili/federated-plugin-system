@@ -76,7 +76,7 @@ importers:
       '@softarc/native-federation':
         specifier: ^2.0.8
         version: 2.0.28
-      plugin-system:
+      federated-plugin-system:
         specifier: workspace:*
         version: link:../plugin-system
     devDependencies:

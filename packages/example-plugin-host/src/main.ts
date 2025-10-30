@@ -1,4 +1,4 @@
-import { getPlugins } from "plugin-system";
+import { getPlugins } from "federated-plugin-system";
 
 interface ExamplePlugin {
   name: string;
