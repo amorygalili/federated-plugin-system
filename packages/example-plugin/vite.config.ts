@@ -7,6 +7,17 @@ export default defineConfig(async ({ command }) => ({
     port: 3003,
     origin: command === "serve" ? `http://localhost:3003` : undefined,
   },
+  build: {
+    target: "esnext",
+    minify: false,
+    cssCodeSplit: false,
+    rollupOptions: {
+      input: "src/plugin.ts",
+      output: {
+        minifyInternalExports: false,
+      },
+    },
+  },
   plugins: [
     await federation({
       options: {

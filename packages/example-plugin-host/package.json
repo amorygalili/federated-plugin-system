@@ -12,7 +12,9 @@
     "federated-plugin-system": "workspace:*"
   },
   "devDependencies": {
+    "@module-federation/vite": "^0.2.6",
     "@types/node": "^20.10.5",
+    "native-federation-esbuild": "workspace:*",
     "typescript": "^5.3.3",
     "vite": "^4.0.1"
   }

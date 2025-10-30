@@ -80,9 +80,15 @@ importers:
         specifier: workspace:*
         version: link:../plugin-system
     devDependencies:
+      '@module-federation/vite':
+        specifier: ^0.2.6
+        version: 0.2.8(@softarc/native-federation@2.0.28)
       '@types/node':
         specifier: ^20.10.5
         version: 20.19.24
+      native-federation-esbuild:
+        specifier: workspace:*
+        version: link:../esbuild
       typescript:
         specifier: ^5.3.3
         version: 5.9.3
